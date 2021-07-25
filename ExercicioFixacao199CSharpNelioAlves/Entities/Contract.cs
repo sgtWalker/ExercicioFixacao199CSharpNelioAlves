@@ -14,6 +14,16 @@ namespace ExercicioFixacao199CSharpNelioAlves.Entities
             Number = number;
             Date = date;
             TotalValue = totalValue;
+            //adicionado após visualizar a versão do prof Nelio Alves
+            //https://github.com/acenelio/interfaces4-csharp/blob/master/Course/Entities/Contract.cs
+            Installments = new List<Installment>();
+        }
+
+        //adicionado após visualizar a versão do prof Nelio Alves
+        //https://github.com/acenelio/interfaces4-csharp/blob/master/Course/Entities/Contract.cs
+        public void AddInstallment(Installment installment)
+        {
+            Installments.Add(installment);
         }
     }
 }

@@ -17,7 +17,6 @@ namespace ExercicioFixacao199CSharpNelioAlves.Services
         {
             try
             {
-                List<Installment> installmentList = new List<Installment>();
                 double amountPerMonth = contract.TotalValue / months;
 
                 for (int i = 1; i <= months; i++)
@@ -25,12 +24,8 @@ namespace ExercicioFixacao199CSharpNelioAlves.Services
                     var dateAux = contract.Date.AddMonths(i);
                     double interest = _onlinePayment.Interest(amountPerMonth, i) + amountPerMonth;
                     double paymentFee = _onlinePayment.PaymentFee(interest);
-                    installmentList.Add(new Installment(dateAux.Date
-                                                        , paymentFee + interest
-                                                        ));
+                    contract.AddInstallment(new Installment(dateAux.Date, paymentFee + interest));
                 }
-
-                contract.Installments = installmentList;
                  
                 return contract;
             }
