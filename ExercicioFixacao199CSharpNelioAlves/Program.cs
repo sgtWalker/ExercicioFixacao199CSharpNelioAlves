@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using ExercicioFixacao199CSharpNelioAlves.Entities;
 
 namespace ExercicioFixacao199CSharpNelioAlves
 {
@@ -9,7 +10,7 @@ namespace ExercicioFixacao199CSharpNelioAlves
         {
             try
             {
-                RequestContractData();
+                var contractObject = RequestContractData();
                 ProcessContract();
                 PrintContractData();
             }
@@ -23,7 +24,7 @@ namespace ExercicioFixacao199CSharpNelioAlves
             }            
         }
 
-        private static void RequestContractData()
+        private static Tuple<Contract, int> RequestContractData()
         {
             Console.WriteLine("Enter contract data");
             Console.Write("Number: ");
@@ -34,6 +35,8 @@ namespace ExercicioFixacao199CSharpNelioAlves
             double totalValue = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
             Console.Write("Enter number of installments: ");
             int installmentsQuantity = int.Parse(Console.ReadLine());
+
+            return new Tuple<Contract, int>(new Contract(number, date, totalValue, new Installment(date, totalValue)), installmentsQuantity);
         }
         private static void ProcessContract()
         {
