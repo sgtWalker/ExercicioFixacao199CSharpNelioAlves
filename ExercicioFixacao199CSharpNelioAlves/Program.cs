@@ -34,9 +34,9 @@ namespace ExercicioFixacao199CSharpNelioAlves
             Console.Write("Contract value: ");
             double totalValue = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
             Console.Write("Enter number of installments: ");
-            int installmentsQuantity = int.Parse(Console.ReadLine());
+            int installmentsNumber = int.Parse(Console.ReadLine());
 
-            return new Tuple<Contract, int>(new Contract(number, date, totalValue, new Installment(date, totalValue)), installmentsQuantity);
+            return new Tuple<Contract, int>(new Contract(number, date, totalValue, new Installment(date, totalValue)), installmentsNumber);
         }
         private static void ProcessContract()
         {
