@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using ExercicioFixacao199CSharpNelioAlves.Entities;
+using ExercicioFixacao199CSharpNelioAlves.Services;
 
 namespace ExercicioFixacao199CSharpNelioAlves
 {
@@ -11,8 +12,7 @@ namespace ExercicioFixacao199CSharpNelioAlves
             try
             {
                 var contractObject = RequestContractData();
-                ProcessContract();
-                PrintContractData();
+                PrintContractData(ProcessContract(contractObject));
             }
             catch (ApplicationException ex)
             {
@@ -36,15 +36,18 @@ namespace ExercicioFixacao199CSharpNelioAlves
             Console.Write("Enter number of installments: ");
             int installmentsNumber = int.Parse(Console.ReadLine());
 
-            return new Tuple<Contract, int>(new Contract(number, date, totalValue, new Installment(date, totalValue)), installmentsNumber);
+            return new Tuple<Contract, int>(new Contract(number, date, totalValue), installmentsNumber);
         }
-        private static void ProcessContract()
+        private static Contract ProcessContract(Tuple<Contract, int> contractObject)
         {
-
+            ContractService service = new ContractService(new PayPalService());
+            return service.ProcessContract(contractObject.Item1, contractObject.Item2);
         }
-        private static void PrintContractData()
+        private static void PrintContractData(Contract contract)
         {
-
+            Console.WriteLine("Installments: ");
+            foreach (Installment installment in contract.Installments)
+                Console.WriteLine(installment.ToString());
         }
     }
 }

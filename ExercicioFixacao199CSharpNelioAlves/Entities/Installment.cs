@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Globalization;
 
 namespace ExercicioFixacao199CSharpNelioAlves.Entities
 {
-    public class Installment
+    class Installment
     {
         public DateTime DueDate { get; set; }
         public double Amount { get; set; }
@@ -11,6 +12,11 @@ namespace ExercicioFixacao199CSharpNelioAlves.Entities
         {
             DueDate = dueDate;
             Amount = amount;
+        }
+
+        public override string ToString()
+        {
+            return $"{DueDate.ToString("dd/MM/yyyy")} -  {Amount.ToString("F2", CultureInfo.InvariantCulture)}";
         }
     }
 }

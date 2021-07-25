@@ -2,7 +2,7 @@
 
 namespace ExercicioFixacao199CSharpNelioAlves.Services
 {
-    public class PayPalService : IOnlinePaymentService
+    class PayPalService : IOnlinePaymentService
     {
         public double PaymentFee(double amount)
         {
@@ -13,11 +13,11 @@ namespace ExercicioFixacao199CSharpNelioAlves.Services
             }
             catch (ApplicationException e)
             {
-                throw new ApplicationException(e.Message);
+                throw new ApplicationException($"Method: PaymentFee, Error: {e.Message}");
             }
             catch (Exception e)
             {
-                throw new Exception(e.Message);
+                throw new Exception($"Method: PaymentFee, Error: {e.Message}");
             }
         }
         public double Interest(double amount, int month)
@@ -29,11 +29,11 @@ namespace ExercicioFixacao199CSharpNelioAlves.Services
             }
             catch (ApplicationException e)
             {
-                throw new ApplicationException(e.Message);
+                throw new ApplicationException($"Method: Interest, Error: {e.Message}");
             }
             catch (Exception e)
             {
-                throw new Exception(e.Message);
+                throw new Exception($"Method: Interest, Error: {e.Message}");
             }
         }
     }
