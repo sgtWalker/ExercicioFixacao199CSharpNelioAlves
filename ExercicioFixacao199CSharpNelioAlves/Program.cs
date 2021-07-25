@@ -7,6 +7,24 @@ namespace ExercicioFixacao199CSharpNelioAlves
     {
         static void Main(string[] args)
         {
+            try
+            {
+                RequestContractData();
+                ProcessContract();
+                PrintContractData();
+            }
+            catch (ApplicationException ex)
+            {
+                Console.WriteLine($"An Application exception ocurred: {ex.Message} \n {(ex.InnerException != null ? ex.InnerException.Message : "")}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An Exception ocurred: {ex.Message} \n {(ex.InnerException != null ? ex.InnerException.Message : "")}");
+            }            
+        }
+
+        private static void RequestContractData()
+        {
             Console.WriteLine("Enter contract data");
             Console.Write("Number: ");
             int number = int.Parse(Console.ReadLine());
@@ -16,7 +34,14 @@ namespace ExercicioFixacao199CSharpNelioAlves
             double totalValue = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
             Console.Write("Enter number of installments: ");
             int installmentsQuantity = int.Parse(Console.ReadLine());
-            
+        }
+        private static void ProcessContract()
+        {
+
+        }
+        private static void PrintContractData()
+        {
+
         }
     }
 }
